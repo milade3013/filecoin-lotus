@@ -1,5 +1,5 @@
 requests
 pycoin
 cryptos
-cbors
+cbor2
 secp256k1

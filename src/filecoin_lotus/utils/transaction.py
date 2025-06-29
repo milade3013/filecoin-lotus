@@ -1,5 +1,5 @@
 from typing import Any, Dict
-import cbors
+import cbor2
 import base64
 from pycoin.encoding.hexbytes import b2h, h2b
 from pycoin.satoshi.der import sigdecode_der
@@ -123,7 +123,7 @@ class FilTransaction:
         return b.__add__(valid_addr)
 
     def cbor_encode(self, data):
-        return cbors.dumpb(data)
+        return cbor2.dumps(data)
 
     def cbor_clong2b(self, data):
         data2hex = hex(data).replace('0x', '')
