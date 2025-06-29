@@ -43,13 +43,10 @@ def get_signature(sign_hex, unsign_hex, pubkey):
 
 
 def handle_vrs(v, r, s):
-    r_hex = hex(r)[2:]
-    s_hex = hex(s)[2:]
-    r_hex_h = r_hex + "0" if len(r_hex) != 64 else r_hex
-    s_hex_h = "0" + s_hex if len(s_hex) != 64 else s_hex
-    r_s_hex = r_hex_h + s_hex_h
+    r_hex = hex(r)[2:].rjust(64, "0")
+    s_hex = hex(s)[2:].rjust(64, "0")
     v_hex = '0' + str(v - 27)
-    return r_s_hex + v_hex
+    return r_hex + s_hex + v_hex
 
 
 class FilTransaction:
